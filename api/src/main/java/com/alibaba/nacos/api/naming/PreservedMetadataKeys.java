@@ -13,31 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.alibaba.nacos.client.config.utils;
-
-import com.alibaba.nacos.client.utils.StringUtils;
+package com.alibaba.nacos.api.naming;
 
 /**
- * Tenant Util
+ * Some keys of metadata that are recognized by Nacos
  *
- * @author Nacos
+ * @author nkorange
+ * @since 1.0.0
  */
-public class TenantUtil {
+public class PreservedMetadataKeys {
 
-    private static String userTenant = "";
-
-    static {
-        userTenant = System.getProperty("tenant.id", "");
-        if (StringUtils.isBlank(userTenant)) {
-            userTenant = System.getProperty("acm.namespace", "");
-        }
-    }
-
-    public static String getUserTenant() {
-        return userTenant;
-    }
-
-    public static void setUserTenant(String userTenant) {
-        TenantUtil.userTenant = userTenant;
-    }
+    /**
+     * The key to indicate the registry source of service instance, such as Dubbo, SpringCloud, etc.
+     */
+    public static final String REGISTER_SOURCE = "preserved.register.source";
 }
